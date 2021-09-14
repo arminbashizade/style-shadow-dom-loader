@@ -1,7 +1,7 @@
 {
-  "name": "style-loader",
+  "name": "style-shadow-dom-loader",
   "version": "3.2.1",
-  "description": "style loader module for webpack",
+  "description": "This is the fork from Style-loader module and add the shadow-dom feature for webpack",
   "license": "MIT",
   "repository": "webpack-contrib/style-loader",
   "author": "Tobias Koppers @sokra",
