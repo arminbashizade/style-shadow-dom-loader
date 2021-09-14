@@ -3,7 +3,7 @@
     <img width="200" height="200"
       src="https://webpack.js.org/assets/icon-square-big.svg">
   </a>
-  <h1>Style Loader</h1>
+  <h1>Style shadow-DOM Loader</h1>
 </div>
 
 [![npm][npm]][npm-url]
@@ -14,19 +14,20 @@
 [![chat][chat]][chat-url]
 [![size][size]][size-url]
 
-# style-loader
+# style-shadow-dom-loader
 
-Inject CSS into the DOM.
+Inject CSS into the DOM.  
+This is the fork from [Style-loader](https://github.com/webpack-contrib/style-loader) module and add the shadow-dom feature for webpack
 
 ## Getting Started
 
-To begin, you'll need to install `style-loader`:
+To begin, you'll need to install `style-shadow-dom-loader`:
 
 ```console
-npm install --save-dev style-loader
+npm install --save-dev style-shadow-dom-loader
 ```
 
-It's recommended to combine `style-loader` with the [`css-loader`](https://github.com/webpack-contrib/css-loader)
+It's recommended to combine `style-shadow-dom-loader` with the [`css-loader`](https://github.com/webpack-contrib/css-loader)
 
 Then add the loader to your `webpack` config. For example:
 
