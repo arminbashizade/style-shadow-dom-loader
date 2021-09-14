@@ -1,6 +1,6 @@
 {
   "name": "style-shadow-dom-loader",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "This is the fork from Style-loader module and add the shadow-dom feature for webpack",
   "license": "MIT",
   "repository": "webpack-contrib/style-loader",
