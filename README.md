@@ -53,7 +53,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-shadow-dom-loader", "css-loader"],
       },
     ],
   },
@@ -122,7 +122,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           // The `injectType`  option can be avoided because it is default behaviour
-          { loader: "style-loader", options: { injectType: "styleTag" } },
+          { loader: "style-shadow-dom-loader", options: { injectType: "styleTag" } },
           "css-loader",
         ],
       },
@@ -179,7 +179,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: { injectType: "singletonStyleTag" },
           },
           "css-loader",
@@ -210,8 +210,8 @@ Works the same as a [`styleTag`](#styleTag), but if the code is executed in IE6-
 #### `lazyStyleTag`
 
 Injects styles into the DOM using multiple `<style></style>` on demand.
-We recommend following `.lazy.css` naming convention for lazy styles and the `.css` for basic `style-loader` usage (similar to other file types, i.e. `.lazy.less` and `.less`).
-When you `lazyStyleTag` value the `style-loader` injects the styles lazily making them useable on-demand via `style.use()` / `style.unuse()`.
+We recommend following `.lazy.css` naming convention for lazy styles and the `.css` for basic `style-shadow-dom-loader` usage (similar to other file types, i.e. `.lazy.less` and `.less`).
+When you `lazyStyleTag` value the `style-shadow-dom-loader` injects the styles lazily making them useable on-demand via `style.use()` / `style.unuse()`.
 
 > ⚠️ Behavior is undefined when `unuse` is called more often than `use`. Don't do that.
 
@@ -247,12 +247,12 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /\.lazy\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-shadow-dom-loader", "css-loader"],
       },
       {
         test: /\.lazy\.css$/i,
         use: [
-          { loader: "style-loader", options: { injectType: "lazyStyleTag" } },
+          { loader: "style-shadow-dom-loader", options: { injectType: "lazyStyleTag" } },
           "css-loader",
         ],
       },
@@ -279,8 +279,8 @@ The loader inject styles like:
 #### `lazySingletonStyleTag`
 
 Injects styles into the DOM using one `<style></style>` on demand.
-We recommend following `.lazy.css` naming convention for lazy styles and the `.css` for basic `style-loader` usage (similar to other file types, i.e. `.lazy.less` and `.less`).
-When you `lazySingletonStyleTag` value the `style-loader` injects the styles lazily making them useable on-demand via `style.use()` / `style.unuse()`.
+We recommend following `.lazy.css` naming convention for lazy styles and the `.css` for basic `style-shadow-dom-loader` usage (similar to other file types, i.e. `.lazy.less` and `.less`).
+When you `lazySingletonStyleTag` value the `style-shadow-dom-loader` injects the styles lazily making them useable on-demand via `style.use()` / `style.unuse()`.
 
 > ⚠️ Source maps do not work.
 
@@ -318,13 +318,13 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /\.lazy\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-shadow-dom-loader", "css-loader"],
       },
       {
         test: /\.lazy\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: { injectType: "lazySingletonStyleTag" },
           },
           "css-loader",
@@ -372,7 +372,7 @@ module.exports = {
       {
         test: /\.link\.css$/i,
         use: [
-          { loader: "style-loader", options: { injectType: "linkTag" } },
+          { loader: "style-shadow-dom-loader", options: { injectType: "linkTag" } },
           { loader: "file-loader" },
         ],
       },
@@ -409,7 +409,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: "style-loader", options: { injectType: "shadowDOM" } },
+          { loader: "style-shadow-dom-loader", options: { injectType: "shadowDOM" } },
           "css-loader",
         ],
       },
@@ -422,7 +422,7 @@ module.exports = {
 
 ```js
 import component from 'component';
-import getCss from 'style-loader/dist/runtime/injectStyleInScript';
+import getCss from 'style-shadow-dom-loader/dist/runtime/injectStyleInScript';
 
 class MyElement extends Element {
     constructor() {
@@ -443,7 +443,7 @@ class MyElement extends Element {
 Type: `Object`
 Default: `{}`
 
-If defined, the `style-loader` will attach given attributes with their values on `<style>` / `<link>` element.
+If defined, the `style-shadow-dom-loader` will attach given attributes with their values on `<style>` / `<link>` element.
 
 **component.js**
 
@@ -460,7 +460,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: "style-loader", options: { attributes: { id: "id" } } },
+          { loader: "style-shadow-dom-loader", options: { attributes: { id: "id" } } },
           { loader: "css-loader" },
         ],
       },
@@ -478,7 +478,7 @@ module.exports = {
 Type: `String|Function`
 Default: `head`
 
-By default, the `style-loader` appends `<style>`/`<link>` elements to the end of the style target, which is the `<head>` tag of the page unless specified by `insert`.
+By default, the `style-shadow-dom-loader` appends `<style>`/`<link>` elements to the end of the style target, which is the `<head>` tag of the page unless specified by `insert`.
 This will cause CSS created by the loader to take priority over CSS already present in the target.
 You can use other values if the standard behavior is not suitable for you, but we do not recommend doing this.
 If you target an [iframe](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement) make sure you have sufficient access rights, the styles will be injected into the content document head.
@@ -499,7 +499,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               insert: "body",
             },
@@ -529,7 +529,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               insert: require.resolve("modulePath"),
             },
@@ -561,7 +561,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               insert: function insertAtTop(element) {
                 var parent = document.querySelector("head");
@@ -613,7 +613,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               injectType: "styleTag",
               styleTagTransform: require.resolve("module-path"),
@@ -644,7 +644,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               injectType: "styleTag",
               styleTagTransform: function (css, style) {
@@ -675,7 +675,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-shadow-dom-loader", "css-loader"],
       },
     ],
   },
@@ -691,7 +691,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: "style-loader", options: { base: 1000 } },
+          { loader: "style-shadow-dom-loader", options: { base: 1000 } },
           "css-loader",
         ],
       },
@@ -709,7 +709,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          { loader: "style-loader", options: { base: 2000 } },
+          { loader: "style-shadow-dom-loader", options: { base: 2000 } },
           "css-loader",
         ],
       },
@@ -723,7 +723,7 @@ module.exports = {
 Type: `Boolean`
 Default: `true`
 
-By default, `style-loader` generates JS modules that use the ES modules syntax.
+By default, `style-shadow-dom-loader` generates JS modules that use the ES modules syntax.
 There are some cases in which using ES modules is beneficial, like in the case of [module concatenation](https://webpack.js.org/plugins/module-concatenation-plugin/) and [tree shaking](https://webpack.js.org/guides/tree-shaking/).
 
 You can enable a CommonJS modules syntax using:
@@ -736,7 +736,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        loader: "style-loader",
+        loader: "style-shadow-dom-loader",
         options: {
           esModule: false,
         },
@@ -752,9 +752,9 @@ module.exports = {
 
 For `production` builds it's recommended to extract the CSS from your bundle being able to use parallel loading of CSS/JS resources later on.
 This can be achieved by using the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin), because it creates separate css files.
-For `development` mode (including `webpack-dev-server`) you can use `style-loader`, because it injects CSS into the DOM using multiple `<style></style>` and works faster.
+For `development` mode (including `webpack-dev-server`) you can use `style-shadow-dom-loader`, because it injects CSS into the DOM using multiple `<style></style>` and works faster.
 
-> ⚠ Do not use together `style-loader` and `mini-css-extract-plugin`.
+> ⚠ Do not use together `style-shadow-dom-loader` and `mini-css-extract-plugin`.
 
 **webpack.config.js**
 
@@ -768,7 +768,7 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          devMode ? "style-shadow-dom-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
           "postcss-loader",
           "sass-loader",
@@ -819,7 +819,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
           },
           {
             loader: "css-loader",
@@ -850,7 +850,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          "style-loader",
+          "style-shadow-dom-loader",
           { loader: "css-loader", options: { sourceMap: true } },
         ],
       },
@@ -886,7 +886,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               attributes: {
                 nonce: "12345678",
@@ -944,7 +944,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-shadow-dom-loader", "css-loader"],
       },
     ],
   },
@@ -975,7 +975,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               insert: function insertAtTop(element) {
                 var parent = document.querySelector("head");
@@ -1016,7 +1016,7 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: "style-loader",
+            loader: "style-shadow-dom-loader",
             options: {
               insert: function insertBeforeAt(element) {
                 const parent = document.querySelector("head");
