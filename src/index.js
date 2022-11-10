@@ -157,7 +157,7 @@ ${getExportLazyStyleCode(esModule, this, request)}
       }
       context.add(content);
 
-      ${esModule ? "export default {}" : ""}
+      ${esModule ? "export default namedExport.default.locals" : ""}
       `;
     }
     case "styleTag":
